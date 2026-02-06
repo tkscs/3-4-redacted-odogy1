@@ -1,7 +1,14 @@
+space = " "
+
 def redact(original_string):
     new_string = ""
     for word in original_string.split(" "):
-        # YOUR CODE HERE
+        for character in word:
+            if character.upper() is True:
+                original_string.replace(word,"[Redacted]")
+            else:
+                new_string = new_string + word + space
+                break
     return new_string
 
 eb_bio = "Erin came to Kehillah after getting her PhD in Cognitive Science \
