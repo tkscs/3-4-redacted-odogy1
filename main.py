@@ -1,7 +1,19 @@
+space = " "
+hi = input("Hi! Do you want to view Dr Ebee's bio(ebee), Mr. Kuszmaul(kuszmaul), Lord D'Souza(lord), or input your own(me)? ")
+if hi == "me":
+    you = input("Write what you want redacted: ")
+react = "[Redacted]"
 def redact(original_string):
     new_string = ""
     for word in original_string.split(" "):
-        # YOUR CODE HERE
+        for character in word:
+            if character.isupper() is True:
+                word = react
+                new_string = new_string + word + space
+                break
+            else:
+                new_string = new_string + word + space
+                break
     return new_string
 
 eb_bio = "Erin came to Kehillah after getting her PhD in Cognitive Science \
@@ -40,6 +52,12 @@ as a result has developed a keen interest in mental health in young people, as \
 well as enabling students to pursue Higher Education. In her spare time, Zoe is \
 enjoying exploring California with her partner and their dog and enjoys good food, \
 exercise, and women's soccer."
-print(redact(eb_bio))
-print(redact(kuszmaul_bio))
-print(redact(dsouza_bio))
+if hi == "me":
+    print(redact(you))
+if hi == "ebee":
+    print(redact(eb_bio))
+if hi == "kuszmaul":
+    print(redact(kuszmaul_bio))
+if hi == "lord":
+    react = "[Redacted by Lord D'Souza]"
+    print(redact(dsouza_bio))
